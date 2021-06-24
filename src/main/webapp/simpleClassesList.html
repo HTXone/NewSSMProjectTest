@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>管理系统模板</title>
+    <meta name="keywords" content="管理,后台,模板" />
+    <meta name="description" content="管理系统模板" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/libs/bootstrap.addtabs/bootstrap.addtabs.css" rel="stylesheet">
+    <link href="static/css/theme/default.css" rel="stylesheet">
+	<link rel="stylesheet" href="static/css/font.css" />
+	<link rel="stylesheet" href="static/css/weadmin.css" />
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="admin-header">
+        <div class="container-fluid">
+            <div class="pull-left">
+                <h1 style="color: #FFFFFF;">教务管理系统</h1>
+            </div>
+            <div class="pull-right">
+                <div class="admin-header-bar"> 
+                    <a href="login.html" onclick="return confirm('您确定要退出系统吗？');"><i class="glyphicon glyphicon-log-out"></i> 退出</a>
+                    <i class="vertical-separator"></i>
+                    <a href="help.html" target="_blank"><i class="glyphicon glyphicon-question-sign"></i> 帮助</a>
+                </div>
+                <div class="user">
+                     当前用户：<span class="label label-default">管理员</span>
+                </div> 
+            </div>
+                 
+        </div>
+    </div>
+    <!-- 侧边菜单 -->
+    <i class="glyphicon glyphicon-play admin-side-toggle"></i>
+    <div class="admin-side" style="background-color: #e4fbff;">
+        <ul class="nav nav-pills nav-stacked remove-radius">
+            <li class="active">
+                <a href="#">
+                    <i class="glyphicon glyphicon-th-large"></i> 系统菜单
+                    <i class="pull-right glyphicon glyphicon-align-justify" id="sideToggle"></i>
+                </a>
+            </li>
+            <li>
+                <!-- 分组菜单 -->
+                <a href="#" class="list-group-item-info" data-toggle="collapse" data-target="#userAndOrg">
+                    <i class="glyphicon glyphicon-th-large"></i> 组织机构 <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                </a>
+                <ul class="list-group collapse in" id="userAndOrg">
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="users" url="./login.html"><i class="glyphicon glyphicon-user"></i> 用户管理</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="depts" url="./list.jsp"><i class="glyphicon glyphicon-inbox"></i> 部门管理</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="orgs" url="/orgs"><i class="glyphicon glyphicon-road"></i> 机构管理</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="list-group-item-info" data-toggle="collapse" data-target="#perm">
+                    <i class="glyphicon glyphicon-info-sign"></i> 角色权限 <span class="pull-right glyphicon glyphicon-chevron-up"></span>
+                </a>
+                <ul class="list-group collapse" id="perm">
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="roles" url="/roles"><i class="glyphicon glyphicon-user"></i> 角色管理</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="menus" url="/menus"><i class="glyphicon glyphicon-align-justify"></i> 菜单管理</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="permissions" url="/permissions"><i class="glyphicon glyphicon-lock"></i> 权限管理</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="list-group-item-info" data-toggle="collapse" data-target="#setting">
+                    <i class="glyphicon glyphicon-wrench"></i> 系统项设置 <span class="pull-right glyphicon glyphicon-chevron-up"></span>
+                </a>
+                <ul class="list-group collapse" id="setting">
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="dict" url="/dict"><i class="glyphicon glyphicon-book"></i> 数据字典</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="countries" url="/countries"><i class="glyphicon glyphicon-globe"></i> 国家或地区</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="areas" url="/areas"><i class="glyphicon glyphicon-retweet"></i> 行政区划 </a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="admin-body" id="tabs">
+		<div class="weadmin-body">
+			
+			<div class="layui-row">
+				<div class="pull-left">
+					<h3>课程管理</h3>
+					<br />
+					<br />
+				</div>
+				<div class=" pull-right">
+					<form class="layui-form layui-col-md12 we-search">
+						会员搜索：
+						<div class="layui-inline">
+							<input class="layui-input" placeholder="开始日" name="start" id="start" />
+						</div>
+						<div class="layui-inline">
+							<input class="layui-input" placeholder="截止日" name="end" id="end" />
+						</div>
+						<div class="layui-inline">
+							<input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input" />
+						</div>
+						<button class="layui-btn" lay-submit="" lay-filter="sreach">
+							<i class="layui-icon layui-icon-search"></i>
+						</button>
+					</form>
+				</div>
+				
+			</div>
+			<div class="weadmin-block">
+				<button class="layui-btn" onclick="WeAdminShow('添加用户','./add.html',600,400)">
+					<i class="layui-icon layui-icon-add-circle-fine"></i>添加
+				</button>
+				<span class="fr" style="line-height:40px">共有数据 22 条</span>
+			</div>
+			<table class="table table-bordered">
+				        <thead>
+				            <tr>
+								<th>课程号</th>
+								<th>课程名称</th>
+								<th>授课老师编号</th>
+								<th>上课时间</th>
+								<th>上课地点</th>
+								<th>周数</th>
+								<th>课程类型</th>
+								<th>学分</th>
+								<th>操作</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+						<c:forEach  items="${courseList}" var="item">
+							<tr>
+								<td>${item.courseid}</td>
+								<td>${item.coursename}</td>
+								<td>${item.teacherid}</td>
+								<td>${item.coursetime}</td>
+								<td>${item.classroom}</td>
+								<td>${item.courseweek}</td>
+								<td>${item.coursetype}</td>
+								<td>${item.score}</td>
+								<td>
+									<button class="btn btn-default btn-xs btn-info" onClick="location.href='/admin/editCourse?id=${item.courseid}'">修改</button>
+									<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/admin/removeCourse?id=${item.courseid}'">删除</button>
+									<!--弹出框-->
+								</td>
+							</tr>
+						</c:forEach>
+				        </tbody>
+			    </table>
+			    <div class="panel-footer">
+					<c:if test="${pagingVO != null}">
+						<nav style="text-align: center">
+							<ul class="pagination">
+								<li><a href="/admin/showCourse?page=${pagingVO.upPageNo}">&laquo;上一页</a></li>
+								<li class="active"><a href="">${pagingVO.curentPageNo}</a></li>
+								<c:if test="${pagingVO.curentPageNo+1 <= pagingVO.totalCount}">
+									<li><a href="/admin/showCourse?page=${pagingVO.curentPageNo+1}">${pagingVO.curentPageNo+1}</a></li>
+								</c:if>
+								<c:if test="${pagingVO.curentPageNo+2 <= pagingVO.totalCount}">
+									<li><a href="/admin/showCourse?page=${pagingVO.curentPageNo+2}">${pagingVO.curentPageNo+2}</a></li>
+								</c:if>
+								<c:if test="${pagingVO.curentPageNo+3 <= pagingVO.totalCount}">
+									<li><a href="/admin/showCourse?page=${pagingVO.curentPageNo+3}">${pagingVO.curentPageNo+3}</a></li>
+								</c:if>
+								<c:if test="${pagingVO.curentPageNo+4 <= pagingVO.totalCount}">
+									<li><a href="/admin/showCourse?page=${pagingVO.curentPageNo+4}">${pagingVO.curentPageNo+4}</a></li>
+								</c:if>
+								<li><a href="/admin/showCourse?page=${pagingVO.totalCount}">最后一页&raquo;</a></li>
+							</ul>
+						</nav>
+					</c:if>
+			    </div>
+			
+		</div>
+		
+    </div>
+	<script src="lib/layui/layui.js" charset="utf-8"></script>
+	<script src="static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="static/libs/bootstrap.addtabs/bootstrap.addtabs.js"></script>
+    <script src="static/js/admin_.js"></script>
+</body>
+
+</html>
