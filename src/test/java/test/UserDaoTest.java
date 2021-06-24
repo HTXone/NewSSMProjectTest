@@ -61,7 +61,7 @@ public class UserDaoTest {
 
     @Test
     public void UserExit() throws IOException{
-        System.out.println(userInfoMapper.UserExit("799"));
+        System.out.println(userInfoMapper.UserExit(799));
     }
 
 

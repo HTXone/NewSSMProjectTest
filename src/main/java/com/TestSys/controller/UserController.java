@@ -41,7 +41,7 @@ public class UserController {
 
     @RequestMapping(value = "/register.do" , method = RequestMethod.POST)
     public String register(@RequestParam(required = true) String userEmail, @RequestParam(required = true) String userPWD,  Model model){
-        boolean a = userService.AddUser(userEmail,userPWD);
+        boolean a = userService.register(userEmail,userPWD);
         if(a) {
             List<User> userList = new ArrayList<>();
             User emps = userService.Login(userEmail, userPWD);

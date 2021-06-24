@@ -4,7 +4,7 @@ public class Classes {
 
     private int courseID;
     private String courseName;
-    private String teacherID;
+    private int teacherID;
     private String courseTime;
     private String classRoom;
     private int courseWeek;
@@ -28,11 +28,11 @@ public class Classes {
         this.courseName = courseName;
     }
 
-    public String getTeacherID() {
+    public int getTeacherID() {
         return teacherID;
     }
 
-    public void setTeacherID(String teacherID) {
+    public void setTeacherID(int teacherID) {
         this.teacherID = teacherID;
     }
 
