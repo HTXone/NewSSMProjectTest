@@ -26,13 +26,17 @@ public interface ScoreMapper {
     @Update("update selectedcourse set mark = #{mark} where courseID = #{courseID} and studentID = #{studentID}")
     int mark(Score score);
 
-    @Select("select * from selectedcourse where courseID = #{courseID}")
-    @ResultMap("ScoreMapper")
-    List<Score> selectByCourseID(@Param("CourseID") int CourseID);
+    @Select("select * from grade where courseID = #{courseID}")
+    @Results(id = "ScoreMap2",value = {
+            @Result(column = "courseID",property = "courseID"),
+            @Result(column = "studentID",property = "studentID"),
+            @Result(column = "mark",property = "mark"),
+            @Result(column = "userName",property = "userName")
+    })
+    List<Score> selectByCourseID(@Param("courseID") int CourseID);
 
     @Select("select * from selectedcourse ")
-    @ResultMap("ScoreMapper")
+    @ResultMap("ScoreMap")
     List<Score> selectALL();
-
 
 }

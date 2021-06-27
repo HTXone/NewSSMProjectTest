@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class StudentServiceImpl implements StudentService {
 
@@ -21,7 +23,6 @@ public class StudentServiceImpl implements StudentService {
     UserInfoMapper userMapper;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)      //事务回滚
     public int NewStudent(String studentName, String PWD, String sex, int collegeID, String grade, String birthYear) {
         User user = new User();
         user.setUserName(studentName);
@@ -39,9 +40,6 @@ public class StudentServiceImpl implements StudentService {
         try{
             int UserID = this.NewStudentID();
             user.setId(UserID);
-            if(userMapper.UserExit(UserID)>0){
-                return 0;
-            }
             ans = userMapper.insert(user);
             if(ans>0){
                 student.setUserID(UserID);
@@ -50,7 +48,28 @@ public class StudentServiceImpl implements StudentService {
         } catch (Exception e){
             e.printStackTrace();
         }
-        return ans;
+        return user.getId();
+    }
+
+    @Override
+    public int NewStudent(Student student) {
+        User user = new User();
+        user.setUserName(student.getUserName());
+        user.setPWD("123456789");
+        user.setRole(2);
+        int ans = 0;
+        try{
+            int UserID = this.NewStudentID();
+            user.setId(UserID);
+            ans = userMapper.insert(user);
+            if(ans>0){
+                student.setUserID(UserID);
+                ans = studentMapper.addStudent(student);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return user.getId();
     }
 
     @Override
@@ -73,10 +92,31 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public int UpdateStudentInfo(Student student) {
+//        System.out.println(student.getBirthYear().getDate());
+        return studentMapper.UpdateStudent(student);
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public int DeleteStudent(int studentID) {
         studentMapper.deleteStudent(studentID);
         return userMapper.DeleteUser(studentID);
+    }
+
+    @Override
+    public List<Student> GetAllStudent() {
+        return studentMapper.selectAllStudents();
+    }
+
+    @Override
+    public Student GetStudentByID(int userID) {
+        return studentMapper.selectStudentByID(userID);
+    }
+
+    @Override
+    public List<Student> GetStudentByName(String userName) {
+        return studentMapper.selectStudentByName("%"+userName+"%");
     }
 
 }

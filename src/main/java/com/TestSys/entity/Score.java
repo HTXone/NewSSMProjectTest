@@ -7,6 +7,32 @@ public class Score {
     private int courseID;
     private int studentID;
     private int mark;
+    private String userName;
+    private boolean over;
+
+    public boolean isOver() {
+        return over;
+    }
+
+    public void setOver(boolean over) {
+        this.over = over;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getStudentName() {
+        return userName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.userName = studentName;
+    }
 
     public int getCourseID() {
         return courseID;

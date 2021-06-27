@@ -47,6 +47,11 @@ public class ClassesServiceImpl implements ClassesService {
     }
 
     @Override
+    public int NewClass(Classes classes) {
+        return classesMapper.AddClass(classes);
+    }
+
+    @Override
     public int NewClassID() {
         return classesMapper.SelectNewID()+1;
     }
@@ -73,6 +78,11 @@ public class ClassesServiceImpl implements ClassesService {
     }
 
     @Override
+    public int UpdateClassInfo(Classes classes) {
+        return 0;
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public int DeleteClass(int ClassID) {
         if(this.UsedClass(ClassID)) return 0;
@@ -94,11 +104,19 @@ public class ClassesServiceImpl implements ClassesService {
     }
 
     @Override
+    public Classes SelectClassesByID(int classesID) {
+        return classesMapper.SelectClassesByID(classesID);
+    }
+
+    @Override
     public List<Classes> SelectClassesByTeacher(int TeacherID) {
         return classesMapper.SelectByTeacherID(TeacherID);
     }
 
-    
+    @Override
+    public List<Classes> SelectClassesByName(String className) {
+        return classesMapper.SelectByClassName(className);
+    }
 
 
 }

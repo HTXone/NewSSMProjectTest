@@ -40,4 +40,9 @@ public class ScoreServiceImpl implements ScoreService {
         score1.setMark(score);
         return scoreMapper.mark(score1);
     }
+
+    @Override
+    public int MarkScore(Score score) {
+        return scoreMapper.mark(score);
+    }
 }

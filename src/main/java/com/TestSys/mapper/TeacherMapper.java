@@ -34,4 +34,12 @@ public interface TeacherMapper {
     @Select("SELECT MAX(userID) FROM teacher")
     int selectNewID();
 
+    @Select("select * from teacher where userID = #{userID}")
+    @ResultMap("TeacherMap")
+    Teacher selectTeacherByID(int teacherID);
+
+    @Select("select * from teacher where userName like #{teacherName}")
+    @ResultMap("TeacherMap")
+    List<Teacher> selectTeacherByName(String teacherName);
+
 }

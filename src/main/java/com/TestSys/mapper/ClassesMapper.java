@@ -14,7 +14,7 @@ public interface ClassesMapper {
     @Results(id = "ClassesMap",value = {
             @Result(id = true,column = "courseID",property = "courseID"),
             @Result(column = "courseName",property = "courseName"),
-            @Result(column = "teacherID",property = "userName"),
+            @Result(column = "teacherID",property = "teacherID"),
             @Result(column = "courseTime",property = "courseTime"),
             @Result(column = "classRoom",property = "classRoom"),
             @Result(column = "courseWeek",property = "courseWeek"),
@@ -42,5 +42,13 @@ public interface ClassesMapper {
     @Select("select * from course where teacherID = #{teacherID}")
     @ResultMap("ClassesMap")
     List<Classes> SelectByTeacherID(int teacherID);
+
+    @Select("select * from course where courseID = #{classesID}")
+    @ResultMap("ClassesMap")
+    Classes SelectClassesByID(int classesID);
+
+    @Select("select * from course where courseName like #{className}")
+    @ResultMap("ClassesMap")
+    List<Classes> SelectByClassName(String className);
 
 }

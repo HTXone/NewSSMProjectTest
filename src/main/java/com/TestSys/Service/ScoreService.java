@@ -12,5 +12,6 @@ public interface ScoreService {
     List<Score> SelectScoreByCourseID(int courseID);
     List<Score> SelectScoreByStudentID(int studentID);
     int MarkScore(int courseID,int studentID,int score);
+    int MarkScore(Score score);
 
 }

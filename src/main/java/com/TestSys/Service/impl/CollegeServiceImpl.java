@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class CollegeServiceImpl implements CollegeService {
 
@@ -42,6 +44,11 @@ public class CollegeServiceImpl implements CollegeService {
     @Transactional(propagation = Propagation.REQUIRED)
     public int DeleteCollege(int CollegeID) {
         return collegeMapper.deleteCollege(CollegeID);
+    }
+
+    @Override
+    public List<College> GetAllCollege() {
+        return collegeMapper.selectAllCollege();
     }
 
 

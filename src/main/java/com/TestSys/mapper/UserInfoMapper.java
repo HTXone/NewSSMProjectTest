@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface UserInfoMapper  {
-    @Select("select * from userlogin where userID = #{userName} and password = #{password}")
+    @Select("select * from userlogin where userName = #{userName} and password = #{password}")
     @Results(id = "UserMap",value = {
             @Result(id = true,column = "userID",property = "id"),
             @Result(column = "password",property = "PWD"),
@@ -20,7 +20,7 @@ public interface UserInfoMapper  {
     User Login(@Param("userName")int userName, @Param("password")String PWD);
 
 
-    @Insert("insert into userlogin (userID,password,userName,role) values (#{userID},#{PWD},#{userName},#{role})")
+    @Insert("insert into userlogin (userID,password,userName,role) values (#{id},#{PWD},#{userName},#{role})")
     int insert(User user);
 
     @Select("select count(*) from userlogin where userID = #{userName} ")

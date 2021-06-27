@@ -32,6 +32,14 @@ public interface StudentMapper {
     @Select("SELECT MAX(userID) FROM student")
     int selectNewID();
 
+    @Select("Select * from student where userID = #{userID}")
+    @ResultMap("StudentMap")
+    Student selectStudentByID(int userID);
+
+    @Select("select * from student where userName like #{userName}")
+    @ResultMap("StudentMap")
+    List<Student> selectStudentByName(String userName);
+
 
 
 }

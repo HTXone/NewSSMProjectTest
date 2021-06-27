@@ -6,9 +6,9 @@
 
   <display-name>Archetype Created Web Application</display-name>
 
-<!--  <welcome-file-list>-->
-<!--    <welcome-file>index.html</welcome-file>-->
-<!--  </welcome-file-list>-->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
 <!--  &lt;!&ndash;配置前端控制器&ndash;&gt;-->
   <servlet>
     <servlet-name>dispatcherServlet</servlet-name>

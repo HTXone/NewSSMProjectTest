@@ -21,7 +21,7 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(value = "/login.do",method = {RequestMethod.POST})
-    public ModelAndView login(@RequestParam(required = true) String userID, @RequestParam(required = true) String userPWD,  HttpServletResponse response){
+    public ModelAndView login(@RequestParam(required = true) int userID, @RequestParam(required = true) String userPWD,  HttpServletResponse response){
         ModelAndView mv = new ModelAndView();
 
         User emps = userService.Login(userID,userPWD);
@@ -40,11 +40,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register.do" , method = RequestMethod.POST)
-    public String register(@RequestParam(required = true) String userEmail, @RequestParam(required = true) String userPWD,  Model model){
-        boolean a = userService.register(userEmail,userPWD);
+    public String register(@RequestParam(required = true) String userID, @RequestParam(required = true) String userPWD,  Model model){
+        boolean a = userService.register(userID,userPWD);
         if(a) {
             List<User> userList = new ArrayList<>();
-            User emps = userService.Login(userEmail, userPWD);
+            User emps = userService.Login(1, userPWD);
             userList.add(emps);
             model.addAttribute("ss", userList);
             return "emp.jsp";
@@ -58,4 +58,7 @@ public class UserController {
         model.addAttribute("ss", userList);
         return "list.jsp";
     }
+
+
+
 }

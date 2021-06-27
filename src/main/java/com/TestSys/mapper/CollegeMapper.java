@@ -28,4 +28,6 @@ public interface CollegeMapper {
 
     @Select("SELECT MAX(collegeID) FROM college")
     int selectNewID();
+
+
 }

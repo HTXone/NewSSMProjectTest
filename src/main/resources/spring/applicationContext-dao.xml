@@ -31,6 +31,7 @@
         <property name="dataSource" ref="dbcp"/>
         <!--配置实体类别名-->
         <property name="typeAliasesPackage" value="com.TestSys.entity"/>
+        <property name="configLocation" value="classpath:spring/mybatis.xml"/>
     </bean>
 
     <!--4、配置mapper扫描器-->
@@ -39,4 +40,17 @@
         <property name="sqlSessionFactoryBeanName" value="factory"/>
     </bean>
 
+    <!-- 配置日期转换器 -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.TestSys.until.DateConverter"></bean>
+            </set>
+        </property>
+    </bean>
+
+
+
 </beans>
+
+

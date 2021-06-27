@@ -1,6 +1,7 @@
 package test;
 
 import com.TestSys.entity.User;
+import com.TestSys.mapper.ScoreMapper;
 import com.TestSys.mapper.UserInfoMapper;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSession;
@@ -25,6 +26,8 @@ public class UserDaoTest {
     private SqlSessionFactory sessionFactory;
     private SqlSession session;
     private UserInfoMapper UDao;
+    @Autowired
+    private ScoreMapper scoreMapper;
 
     @Autowired
     private UserInfoMapper userInfoMapper;
@@ -64,6 +67,10 @@ public class UserDaoTest {
         System.out.println(userInfoMapper.UserExit(799));
     }
 
+    @Test
+    public void ScoreSelect() throws IOException{
+        System.out.println(scoreMapper.selectByCourseID(1).get(0).getStudentName());
+    }
 
 
 }

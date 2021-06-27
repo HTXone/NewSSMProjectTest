@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
 
-    <properties resource="db.properties"></properties>
+
     <!--    <settings>-->
     <!--        &lt;!&ndash; 打开延迟加载的开关 &ndash;&gt;-->
     <!--        <setting name="lazyLoadingEnabled" value="true" />-->
@@ -21,5 +25,12 @@
 <!--        &lt;!&ndash;Package标签用于指定dao接口所在的包 当指定完成后不需要写mapper以及resource或class&ndash;&gt;-->
 <!--        <package name = "TestSys.mapper"/>-->
 <!--    </mappers>-->
+    <!--分页器-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="reasole" value="false"/>
+        </plugin>
+    </plugins>
+
 
 </configuration>
