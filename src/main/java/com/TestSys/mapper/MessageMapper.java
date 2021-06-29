@@ -1,10 +1,7 @@
 package com.TestSys.mapper;
 
 import com.TestSys.entity.Message;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,4 +21,8 @@ public interface MessageMapper {
 
     @Insert("insert into message (SenderID,ReciverID,Message,messageID) values (#{senderID},#{reciverID},#{message},#{messageID})")
     int AddMessage(Message message);
+
+    @Select("select * from message where senderID = #{SenderID}")
+    @ResultMap("messageMap")
+    List<Message> SelectMessageBySenderID(int SenderID);
 }

@@ -20,5 +20,7 @@ public interface ClassesService {
     List<Classes> StudentSelectedClasses(int studentID);
     List<Classes> StudentScore(int studentID);
 
+    int[] StudentScoreCount(int studentID);
+
 
 }

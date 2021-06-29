@@ -20,6 +20,11 @@ public class MessageServiceImpl implements MessageServcie {
     }
 
     @Override
+    public List<Message> SelectMessageBySenderID(int senderID) {
+        return messageMapper.SelectMessageBySenderID(senderID);
+    }
+
+    @Override
     public int AddMessage(Message message) {
         return messageMapper.AddMessage(message);
     }

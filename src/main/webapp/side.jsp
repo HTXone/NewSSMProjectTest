@@ -51,8 +51,9 @@
                 <i class="glyphicon glyphicon-wrench"></i> 用户信息设置 <span class="pull-right glyphicon glyphicon-chevron-up"></span>
             </a>
             <ul class="list-group collapse" id="setting">
-                <li class="list-group-item"><a href="javascript:void(0);" data-addtab="dict" url="/dict"><i class="glyphicon glyphicon-book"></i> 修改密码</a></li>
-                <li class="list-group-item"><a href="/MessageList.do?param=${user['id']}" data-addtab="dict" url="/dict"><i class="glyphicon glyphicon-book"></i> 信息邮箱</a></li>
+                <li class="list-group-item"><a href="/passwordRest.jsp;" data-addtab="dict" url="/dict"><i class="glyphicon glyphicon-book"></i> 修改密码</a></li>
+                <li class="list-group-item"><a href="/MessageList.do?param=${user['id']}" data-addtab="dict" url="/dict"><i class="glyphicon glyphicon-book"></i> 收件箱</a></li>
+                <li class="list-group-item"><a href="/SendMessageList.do?param=${user['id']}" data-addtab="dict" url="/dict"><i class="glyphicon glyphicon-book"></i> 发件箱</a></li>
             </ul>
         </li>
     </ul>

@@ -35,37 +35,25 @@
 					</div>
 					<div class="box2 col-sm-10 col-xs-10" >
 						<ul id="ul1"class="clearfix">
-							<li><a href="index.html">首页</a></li>
-							<li><a href="templet.html">模板</a></li>
-							<li><a href="setmeal.html">套餐</a></li>
-							<li><a href="example.html">案例</a></li>
-							<li id="wd"><a>文档<i class="glyphicon glyphicon-menu-right"></i></a></li>
-							<li id="gy"><a>关于<i class="glyphicon glyphicon-menu-right"></i></a></li>
+							<li><a href="index.jsp">首页</a></li>
+
 						</ul>
 						<div id="wd1">
 							<ul>
 								<li id="fanhui1"><a>返回上一级</a></li>
-								<li><a>教程中心</a></li>
-								<li><a>建站资讯</a></li>
-								<li><a>更新日志</a></li>
+
 							</ul>
 						</div>
 						<div id="gy1" >
 							<ul id="ul2">
 								<li id="fanhui2"><a>返回上一级</a></li>
-								<li id="gcxx"><a>公司信息<i class="glyphicon glyphicon-menu-right"></i></a></li>
-								<li><a>荣誉资质</a></li>
-								<li><a>联系客服</a></li>
+
 							</ul>
 						</div>
 						<div id="gc" >
 							<ul >
 								<li id="fanhui3"><a>返回上一级</a></li>
-								<li><a>公司介绍</a></li>
-								<li><a>服务条款</a></li>
-								<li><a>法律声明</a></li>
-								<li><a>可接受服务</a></li>
-								<li><a>免责声明</a></li>
+
 							</ul>
 						</div>
 					</div>
@@ -90,9 +78,9 @@
     						<label for="password">密码</label>
     						<input type="password" class="form-control" id="password" name = "userPWD">
   						</div>
-						<!-- <c:if test="${loginfail eq 1}">
-						  <span style="margin-left: 10px;color: #FFFFFF;">用户名或密码错误</span>
-						</c:if> -->
+						<c:if test="${loginfail == 1}">
+						  	<span style="margin-left: 10px;color: #FFFFFF;">用户名或密码错误</span>
+						</c:if>
   						<!-- <div class="checkbox">
     						<label>
      		 					<input type="checkbox"> 记住我（请在私人计算机上使用此功能）
@@ -100,7 +88,7 @@
   						</div> -->
   						<div class="c3-1">
 							<button id="denglu" type="submit" class="btn btn-default btn1">登录</button>  
-							<a href="register.html" type="button" class="btn btn-default btn2">注册</a>
+
 						</div>
 						<!-- <div class="c3-2 clearfix">
 							<span class="c3-2-2">其他账号登录：</span>
@@ -111,9 +99,7 @@
 								<a href="" title="使用脸书登录"><span class="s4"></span></a>
 							</div>
 						</div> -->
-						<div class="c3-3 clearfix">
-							<a href="" class="pull-right">忘记密码？点这里找回</a>
-						</div>
+
 					</form>
 				</div>
 			</div>

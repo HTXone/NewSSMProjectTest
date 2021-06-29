@@ -25,12 +25,18 @@
     <body>
     <jsp:include page="head.jsp"></jsp:include>
     <!-- 侧边菜单 -->
-    <jsp:include page="side.jsp"></jsp:include>
+    <jsp:include page="side.jsp"></jsp:include><div class="admin-body" id="tabs">
         <div class="weadmin-body">
             <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-            <div id="main" style="width: 100%;height:400px;"></div>
+            <blockquote class="layui-elem-quote">
+                欢迎：${user['userName']}
 
-        </div>
+            </blockquote>
+            <div id="main" style="width: 100%;height:400px;"></div>
+            <blockquote class="layui-elem-quote">
+                平均分：${StudentCount[3]}
+            </blockquote>
+        </div></div>
         <script src="echart/echarts.min.js"></script>
         <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
@@ -53,15 +59,14 @@
             },
             series: [
                 {
-                    name: '访问来源',
+                    name: '已修学分',
                     type: 'pie',
                     radius: '50%',
                     data: [
-                        {value: 1048, name: '搜索引擎'},
-                        {value: 735, name: '直接访问'},
-                        {value: 580, name: '邮件营销'},
-                        {value: 484, name: '联盟广告'},
-                        {value: 300, name: '视频广告'}
+                        {value: ${StudentCount[0]}, name: '必修课'},
+                        {value: ${StudentCount[1]}, name: '选修课'},
+                        {value: ${StudentCount[2]}, name: '公共课'},
+
                     ],
                     emphasis: {
                         itemStyle: {

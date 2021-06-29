@@ -35,17 +35,16 @@
 						<ul class="nav navbar-nav">
 							<li><a href="/StudentList.do">管理员</a></li>
 							<li><a href="/TeacherClassesList.do?param=${user['id']}">教师</a></li>
-							<li><a href="/simpleStudentIndex.jsp">学生</a></li>
-							<li><a href="/StudentSelectedClass.do?studentID=10001">退课</a></li>
-							<li ><a href="/ScoreList.do">打分</a></li>
-							<li class="gy1"><a href="">${user}</a>
+							<li><a href="/StudentIndex.do?studentID=${user['id']}">学生</a></li>
+
+							<li class="gy1"><a href="">${user['userName']}</a>
 
 							</li>
 								
 						</ul>
 						<ul class="zcdl nav navbar-nav pull-right">
 							<li><a href="login.jsp">登录</a></li>
-							<li><a href="register.html">注册</a></li>
+
 						</ul>
 					</div>					
 				</div>
@@ -69,13 +68,13 @@
 					<div class="container  cc2">
 						<div class="cover2" >
 							<div class="co2-1">
-								<p>自己做网站</p>
-								<p>简单又省钱</p>
+								<p>学习</p>
+								<p>学习</p>
 							</div>
 							<div class="co2-2">
-								<span>引领「响应式自助建站」潮流，每一套模板都是艺术品</span>
+								<span>好好学习，天天向上</span>
 							</div>
-							<a class="co2-3" href="" >免 费 创 建 账 户</a>
+							<a class="co2-3" href="" >知 识 就 是 力 量</a>
 						</div>
 					</div>
 					<div class="container cc1">
@@ -83,14 +82,14 @@
 							<div class="co1 hide" id="con">
 								<!--<p>做一个响应式网站</p>
 								<p>让世界更好的了解您</p>-->
-								<span>做一个响应式网站<br>让世界更好的了解您</span>
+								<span>好好学习<br>天天向上！</span>
 							</div>
 							<div class="co1" id="show"></div>
 							<div class="co2" >
-								<p>真「响应式」自助建站平台</p>
-								<p>艺术品级模板 引领自助建站潮流</p>
+								<p>好好学习</p>
+								<p>天天向上！</p>
 							</div>
-							<a class="co3" href="" >免 费 创 建 账 户</a>
+							<a class="co3" href="" >知 识 就 是 力 量</a>
 						</div>
 					</div>
 					<div class="container cc1">

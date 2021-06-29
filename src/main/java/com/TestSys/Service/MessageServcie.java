@@ -9,5 +9,6 @@ import java.util.List;
 public interface MessageServcie {
 
     List<Message> SelectMessageByID(int reciverID);
+    List<Message> SelectMessageBySenderID(int reciverID);
     int AddMessage(Message message);
 }

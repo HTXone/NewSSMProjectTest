@@ -55,7 +55,7 @@
                 /SelectedCourse.do = authc, roles[student]
                 /RemoveSelectedCourse.do = authc, roles[student]
                 /StudentsClassesList.do = authc, roles[student]
-                /simpleStudentIndex.jsp = authc, roles[student]
+                /StudentIndex.do = authc, roles[student]
 
                 /index = anon
 

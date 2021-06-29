@@ -183,6 +183,13 @@ public class ClassesController {
         return "simpleClassesList.jsp";
     }
 
+    @RequestMapping("/StudentIndex.do")
+    public String StudentScoreCount(@RequestParam("studentID")int studentID,Model model){
+        int arr[] = classesService.StudentScoreCount(studentID);
+        model.addAttribute("StudentCount",arr);
+        return "simpleStudentIndex.jsp";
+    }
+
 
 
 }

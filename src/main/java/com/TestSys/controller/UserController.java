@@ -3,6 +3,7 @@ package com.TestSys.controller;
 import com.TestSys.Service.UserService;
 import com.TestSys.entity.User;
 import com.TestSys.mapper.UserInfoMapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -25,40 +26,41 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(value = "/login.do", method = {RequestMethod.POST})
-    public String login(String userID, String userPWD, HttpSession session) throws Exception {
+    public String login(String userID, String userPWD, HttpSession session,Model model) throws Exception {
 
         //Shiro实现登录
         UsernamePasswordToken token = new UsernamePasswordToken(userID, userPWD);
         Subject subject = SecurityUtils.getSubject();
+        try {
+            //如果获取不到用户名就是登录失败，但登录失败的话，会直接抛出异常
+            subject.login(token);
 
-        //如果获取不到用户名就是登录失败，但登录失败的话，会直接抛出异常
-        subject.login(token);
-
-        User user = userService.SelectUser(Integer.parseInt(userID));
-        session.setAttribute("user",user);
-        if (subject.hasRole("admin")) {
-            return "/index.jsp";
-        } else if (subject.hasRole("teacher")) {
-            return "/index.jsp";
-        } else if (subject.hasRole("student")) {
-            return "/index.jsp";
+            User user = userService.SelectUser(Integer.parseInt(userID));
+            session.setAttribute("user", user);
+            if (subject.hasRole("admin")) {
+                return "/index.jsp";
+            } else if (subject.hasRole("teacher")) {
+                return "/index.jsp";
+            } else if (subject.hasRole("student")) {
+                return "/index.jsp";
+            }
+        }catch (Exception e){
+            model.addAttribute("loginfail",1);
+            return "/login.jsp";
         }
-
+        model.addAttribute("loginfail",1);
         return "/login.jsp";
     }
 
-    @RequestMapping(value = "/register.do" , method = RequestMethod.POST)
-    public String register(@RequestParam(required = true) String userID, @RequestParam(required = true) String userPWD,  Model model){
-        boolean a = userService.register(userID,userPWD);
-        if(a) {
-            List<User> userList = new ArrayList<>();
-            User emps = userService.Login(1, userPWD);
-            userList.add(emps);
-            model.addAttribute("ss", userList);
-            return "emp.jsp";
+    @RequestMapping(value = "/PWDCharge.do", method = {RequestMethod.POST})
+    public String PWDChange(@RequestParam("UserID")int UserID, @RequestParam("oldPassword") String OldPWD, @RequestParam("password2") String NewPWD){
+        int ans = userService.UpdatePWD(UserID,OldPWD,NewPWD);
+        if(ans>0){
+            return "/login.jsp";
         }
-        return null;
+        return "/index.jsp";
     }
+
 
     @RequestMapping("/UserList.do")
     public String getAllUser(Model model){

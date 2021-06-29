@@ -88,7 +88,8 @@ public class ClassesServiceImpl implements ClassesService {
 
     @Override
     public int UpdateClassInfo(Classes classes) {
-        return 0;
+        if(this.UsedClass(classes.getCollegeID())) return 0;
+        return classesMapper.UpdateClass(classes);
     }
 
     @Override
@@ -135,6 +136,27 @@ public class ClassesServiceImpl implements ClassesService {
     @Override
     public List<Classes> StudentScore(int studentID) {
         return classesMapper.StudentScore(studentID);
+    }
+
+    @Override
+    public int[] StudentScoreCount(int studentID) {
+        int[] a = new int[4];
+        int score = 0;
+        int sum = 0;
+        List<Classes> classes = classesMapper.StudentScore(studentID);
+        for (Classes i:classes) {
+            if(i.getCourseType().equals("必修课") ){
+                a[0]+=i.getScore();
+            }else if (i.getCourseType().equals("选修课")){
+                a[1]+=i.getScore();
+            }else{
+                a[2]+=i.getScore();
+            }
+            score+=i.getScore()*i.getMark();
+            sum+=i.getScore();
+        }
+        a[3]=score/sum;
+        return a;
     }
 
 

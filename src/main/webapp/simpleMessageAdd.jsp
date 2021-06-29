@@ -54,9 +54,9 @@
 <%--								    </div>--%>
 <%--								  </div>--%>
 								<div class="form-group">
-									<label for="inputPassword3" class="col-sm-2 control-label">收件人</label>
+									<label for="inputPassword3" class="col-sm-2 control-label">发件人</label>
 									<div class="col-sm-10">
-										<input type="number" class="form-control" id="inputPassword3" name="senderID" value="${user['id']}">
+										<input type="number" readonly="readonly" class="form-control" id="inputPassword3" name="senderID" value="${user['id']}">
 									</div>
 								</div>
 								  <div class="form-group">

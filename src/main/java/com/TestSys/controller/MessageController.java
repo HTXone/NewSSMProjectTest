@@ -34,9 +34,25 @@ public class MessageController {
         return "simpleMessageList.jsp";
     }
 
+    @RequestMapping("/SendMessageList.do")
+    public String FindSendMessages(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam("param") int userID, Model model){
+        Integer pageSize = 3;
+        PageHelper.clearPage();
+        PageHelper.startPage(pageNo, pageSize);
+        List<Message> messages = messageServcie.SelectMessageBySenderID(userID);
+        PageInfo<Message> pageInfo = new PageInfo<>(messages);
+
+        model.addAttribute("messages",messages);
+        model.addAttribute("pageInfo",pageInfo);
+        model.addAttribute("PageUrl","/SendMessageList.do");
+        model.addAttribute("param1",userID);
+        return "simpleMessageList.jsp";
+    }
+
+    @RequestMapping("/AddMessage.do")
     public String AddMessages(Message message,Model model){
         messageServcie.AddMessage(message);
-        return this.FindMessages(1, message.getSenderID(), model);
+        return this.FindSendMessages(1, message.getSenderID(), model);
     }
 
 
