@@ -38,11 +38,11 @@ public class UserController {
             User user = userService.SelectUser(Integer.parseInt(userID));
             session.setAttribute("user", user);
             if (subject.hasRole("admin")) {
-                return "/index.jsp";
+                return "/StudentList.do";
             } else if (subject.hasRole("teacher")) {
-                return "/index.jsp";
+                return "/TeacherClassesList.do?param="+user.getId();
             } else if (subject.hasRole("student")) {
-                return "/index.jsp";
+                return "/StudentIndex.do?studentID="+user.getId();
             }
         }catch (Exception e){
             model.addAttribute("loginfail",1);
@@ -67,6 +67,12 @@ public class UserController {
         List<User> userList = userService.getAllUser();
         model.addAttribute("ss", userList);
         return "list.jsp";
+    }
+
+    @RequestMapping("/logout.do")
+    public String Logout(HttpSession session,Model model){
+        session.setAttribute("user",null);
+        return "/login.jsp";
     }
 
 

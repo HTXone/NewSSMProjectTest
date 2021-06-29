@@ -107,7 +107,7 @@ public class Classes {
         return "Classes{" +
                 "courseID=" + courseID +
                 ", courseName='" + courseName + '\'' +
-                ", teacherID='" + teacherID + '\'' +
+                ", teacherID=" + teacherID +
                 ", courseTime='" + courseTime + '\'' +
                 ", classRoom='" + classRoom + '\'' +
                 ", courseWeek=" + courseWeek +

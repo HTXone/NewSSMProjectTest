@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>管理系统模板</title>
+    <title>课程管理</title>
     <meta Name="keywords" content="管理,后台,模板" />
     <meta Name="description" content="管理系统模板" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,10 +54,11 @@
 				
 			</div>
 			<div class="weadmin-block">
+				<c:if test="${user['role']==0}">
 				<button class="layui-btn" onclick="location.href='/toAddClasses.do'">
 					<i class="layui-icon layui-icon-add-circle-fine"></i>添加
-				</button>
-				<span class="fr" style="line-height:40px">共有数据 22 条</span>
+				</button></c:if>
+				<span class="fr" style="line-height:40px">共有数据 ${classess.size()} 条</span>
 			</div>
 			<table class="table table-bordered">
 				        <thead>

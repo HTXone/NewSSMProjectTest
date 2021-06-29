@@ -6,7 +6,7 @@
         </div>
         <div class="pull-right">
             <div class="admin-header-bar">
-                <a href="login.html" onclick="return confirm('您确定要退出系统吗？');"><i class="glyphicon glyphicon-log-out"></i> 退出</a>
+                <a href="/logout.do" onclick="return confirm('您确定要退出系统吗？');"><i class="glyphicon glyphicon-log-out"></i> 退出</a>
                 <i class="vertical-separator"></i>
             </div>
             <div class="user">

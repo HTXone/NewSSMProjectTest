@@ -26,7 +26,7 @@
 						</button>
 					</div>
 					<div class="collapse navbar-collapse" id="daohangtiao">
-						<span class="close"><a href="index.html"><i></i></a></span>					
+						<span class="close"><a href="index.jsp"><i></i></a></span>
 					</div>						
 				</div>
 				<div id="box">
@@ -71,7 +71,7 @@
 				<div class="c3" >
 					<form action="/login.do" method="post">
 						<div class="form-group">
-    						<label for="usernameoremail">用户名或邮箱</label>
+    						<label for="usernameoremail">用户ID</label>
     						<input type="text" class="form-control" id="usernameoremail" name = "userID">
   						</div>
   						<div class="form-group">

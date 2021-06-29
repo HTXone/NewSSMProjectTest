@@ -29,7 +29,7 @@
 						<button type="button" class="zd" id="zd" >
 							<span class="glyphicon glyphicon-align-justify"></span>
 						</button>
-						<a href="#" class="navbar-brand"><img src="img/qifeiye.png"/></a>
+
 					</div>
 					<div class="collapse navbar-collapse" id="daohangtiao">
 						<ul class="nav navbar-nav">
@@ -68,8 +68,8 @@
 					<div class="container  cc2">
 						<div class="cover2" >
 							<div class="co2-1">
-								<p>学习</p>
-								<p>学习</p>
+								<p>宝剑锋从磨砺出，</p>
+								<p>梅花香自苦寒来。</p>
 							</div>
 							<div class="co2-2">
 								<span>好好学习，天天向上</span>
@@ -82,14 +82,14 @@
 							<div class="co1 hide" id="con">
 								<!--<p>做一个响应式网站</p>
 								<p>让世界更好的了解您</p>-->
-								<span>好好学习<br>天天向上！</span>
+								<span>好好学习,<br>天天向上！</span>
 							</div>
 							<div class="co1" id="show"></div>
 							<div class="co2" >
-								<p>好好学习</p>
-								<p>天天向上！</p>
+								<p>宝剑锋从磨砺出，</p>
+								<p>梅花香自苦寒来。</p>
 							</div>
-							<a class="co3" href="" >知 识 就 是 力 量</a>
+							<a class="co3" href="" >知识 就是 力量</a>
 						</div>
 					</div>
 					<div class="container cc1">

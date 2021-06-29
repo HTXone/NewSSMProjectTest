@@ -6,11 +6,12 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>管理系统模板</title>
+        <title>学生管理</title>
         <meta Name="keywords" content="管理,后台,模板" />
         <meta Name="description" content="管理系统模板" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta Name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="static/libs/bootstrap.addtabs/bootstrap.addtabs.css" rel="stylesheet">
         <link href="static/css/theme/default.css" rel="stylesheet">
@@ -47,7 +48,7 @@
         option = {
             title: {
                 text: '成绩统计表',
-                subtext: '/////',
+                subtext: '学分',
                 left: 'center'
             },
             tooltip: {

@@ -11,11 +11,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>管理系统模板</title>
+    <title>学生管理</title>
     <meta name="keywords" content="管理,后台,模板" />
     <meta name="description" content="管理系统模板" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="static/libs/bootstrap.addtabs/bootstrap.addtabs.css" rel="stylesheet">
     <link href="static/css/theme/default.css" rel="stylesheet">
@@ -45,7 +46,7 @@
 								</div>
 						    </div>
 						    <div class="panel-body">
-								<form class="form-horizontal" role="form" action="/EditStudent.do" id="editfrom">
+								<form class="form-horizontal" role="form" action="/EditStudent.do" id="editfrom" method="post">
 									  <div class="form-group ">
 									    <label for="inputEmail3" class="col-sm-2 control-label" >学号</label>
 									    <div class="col-sm-10">

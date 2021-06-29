@@ -31,7 +31,7 @@ public interface ClassesMapper {
     @Select("select count(*) from course")
     int SelectClassesNum();
 
-    @Update("update course set courseName = #{courseName}, courseTime = #{courseTime}, classRoom = #{classRoom}, courseWeek = #{courseWeek}, courseType = #{courseType} where courseID = #{courseID}")
+    @Update("update course set courseName = #{courseName}, courseTime = #{courseTime}, classRoom = #{classRoom}, courseWeek = #{courseWeek}, courseType = #{courseType},teacherID = #{teacherID},score=#{score} where courseID = #{courseID}")
     int UpdateClass(Classes classes);
 
     @Delete("delete from course where courseID = #{courseID}")

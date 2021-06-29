@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -63,7 +64,7 @@ public class ScoreController {
         return "simpleMark.jsp";
     }
 
-    @RequestMapping(value = "/Mark.do")
+    @RequestMapping(value = "/Mark.do",method = RequestMethod.POST)
     public String Mark(Score score,@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam(value = "courseID")int courseID, Model model){
         scoreService.MarkScore(score);
 

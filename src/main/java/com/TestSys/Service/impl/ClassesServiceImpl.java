@@ -88,6 +88,7 @@ public class ClassesServiceImpl implements ClassesService {
 
     @Override
     public int UpdateClassInfo(Classes classes) {
+        System.out.println(classes.toString());
         if(this.UsedClass(classes.getCollegeID())) return 0;
         return classesMapper.UpdateClass(classes);
     }
@@ -103,6 +104,7 @@ public class ClassesServiceImpl implements ClassesService {
     public boolean UsedClass(int ClassID) {
         List<Score> scoreList = scoreMapper.selectByCourseID(ClassID);
         if(scoreList.size()>0){
+            System.out.println("USED");
             return false;
         }
         return true;

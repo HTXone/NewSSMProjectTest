@@ -54,13 +54,13 @@ public class StudentController {
         return "/simpleStudentAdd.jsp";
     }
 
-    @RequestMapping("/EditStudent.do")
+    @RequestMapping(value = "/EditStudent.do",method = RequestMethod.POST)
     public String EditStudents(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,Student student, Model model){
         studentService.UpdateStudentInfo(student);
         return this.FindAllStudents(1,model);
     }
 
-    @RequestMapping("/AddStudent.do")
+    @RequestMapping(value = "/AddStudent.do",method = RequestMethod.POST)
     public String AddStudents(Student student,Model model){
         int id = studentService.NewStudent(student);
         return this.FindAllStudents(1,model);

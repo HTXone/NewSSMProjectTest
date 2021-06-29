@@ -7,11 +7,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>管理系统模板</title>
+    <title>学生管理</title>
     <meta name="keywords" content="管理,后台,模板" />
     <meta name="description" content="管理系统模板" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="static/libs/bootstrap.addtabs/bootstrap.addtabs.css" rel="stylesheet">
     <link href="static/css/theme/default.css" rel="stylesheet">
@@ -54,7 +55,7 @@
 				<button class="layui-btn" onclick="location.href='/toAddStudent.do'">
 					<i class="layui-icon layui-icon-add-circle-fine"></i>添加
 				</button>
-				<span class="fr" style="line-height:40px">共有数据 22 条</span>
+				<span class="fr" style="line-height:40px">共有数据 ${students.size()} 条</span>
 			</div>
 			<table class="layui-table" id="memberList">
 				<thead>

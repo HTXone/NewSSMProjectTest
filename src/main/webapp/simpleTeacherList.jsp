@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>管理系统模板</title>
+    <title>教师管理</title>
     <meta name="keywords" content="管理,后台,模板" />
     <meta name="description" content="管理系统模板" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,7 +53,7 @@
 				<button class="layui-btn" onclick="location.href='/toAddTeacher.do'">
 					<i class="layui-icon layui-icon-add-circle-fine"></i>添加
 				</button>
-				<span class="fr" style="line-height:40px">共有数据 22 条</span>
+				<span class="fr" style="line-height:40px">共有数据 ${teachers.size()} 条</span>
 			</div>
 			<table class="table table-bordered">
 				        <thead>

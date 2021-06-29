@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -99,7 +100,7 @@ public class ClassesController {
         return "/simpleClassesAdd.jsp";
     }
 
-    @RequestMapping("/EditClasses.do")
+    @RequestMapping(value = "/EditClasses.do",method = RequestMethod.POST)
     public String EditClassess(Classes classes, Model model){
         classes.setTeacherID(classes.getTeacherID());
         int ans =classesService.UpdateClassInfo(classes);
@@ -108,7 +109,7 @@ public class ClassesController {
         return this.FindAllClassess(1,model);
     }
 
-    @RequestMapping("/AddClasses.do")
+    @RequestMapping(value = "/AddClasses.do",method = RequestMethod.POST)
     public String AddClassess(Classes classes,Model model){
         int id = classesService.NewClass(classes);
         System.out.println(classes);
@@ -118,11 +119,12 @@ public class ClassesController {
 
     @RequestMapping("/SelectClasses.do")
     public String SelectClassess(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam(value = "param") String classesName,Model model){
-        List<Classes> classess = classesService.SelectClassesByName(classesName);
+
 
         Integer pageSize = 3;
         PageHelper.startPage(pageNo, pageSize);
 //        List<Classes> classess = classesService.GetAllClasses();
+        List<Classes> classess = classesService.SelectClassesByName(classesName);
         PageInfo<Classes> pageInfo = new PageInfo<>(classess);
 
         model.addAttribute("classess",classess);

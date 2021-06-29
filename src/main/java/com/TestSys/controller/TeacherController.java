@@ -54,13 +54,13 @@ public class TeacherController {
         return "/simpleTeacherAdd.jsp";
     }
 
-    @RequestMapping(value = "/EditTeacher.do")
+    @RequestMapping(value = "/EditTeacher.do",method = RequestMethod.POST)
     public String EditTeachers(Teacher teacher, Model model){
         teacherService.UpdateTeacherInfo(teacher);
         return this.FindAllTeachers(1,model);
     }
 
-    @RequestMapping("/AddTeacher.do")
+    @RequestMapping(value = "/AddTeacher.do",method = RequestMethod.POST)
     public String AddTeachers(Teacher teacher,Model model){
         int id = teacherService.NewTeacher(teacher);
         return this.FindAllTeachers(1,model);

@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>管理系统模板</title>
+    <title>课程管理</title>
     <meta name="keywords" content="管理,后台,模板" />
     <meta name="description" content="管理系统模板" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
