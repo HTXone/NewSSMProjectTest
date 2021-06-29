@@ -34,6 +34,7 @@ public class TeacherController {
         model.addAttribute("teachers",teachers);
         model.addAttribute("pageInfo",pageInfo);
         model.addAttribute("PageUrl","/TeacherList.do");
+        model.addAttribute("param1","");
         return "simpleTeacherList.jsp";
     }
 
@@ -56,38 +57,32 @@ public class TeacherController {
     @RequestMapping(value = "/EditTeacher.do")
     public String EditTeachers(Teacher teacher, Model model){
         teacherService.UpdateTeacherInfo(teacher);
-        System.out.println(teacher.toString());
-        List<Teacher> teachers = teacherService.GetAllTeacher();
-        model.addAttribute("teachers",teachers);
-        model.addAttribute("PageUrl","/TeacherList.do");
-        return "simpleTeacherList.jsp";
+        return this.FindAllTeachers(1,model);
     }
 
     @RequestMapping("/AddTeacher.do")
     public String AddTeachers(Teacher teacher,Model model){
         int id = teacherService.NewTeacher(teacher);
-        model.addAttribute("NewID",id);
-        model.addAttribute("PWD","123456789");
-        List<College> colleges= collegeService.GetAllCollege();
-        model.addAttribute("collegeList",colleges);
-        model.addAttribute("PageUrl","/TeacherList.do");
-        return "simpleTeacherList.jsp";
+        return this.FindAllTeachers(1,model);
     }
 
     @RequestMapping("/SelectTeacher.do")
-    public String SelectTeachers(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam(value = "teacherName") String teacherName,Model model){
-        List<Teacher> teachers = teacherService.GetTeacherByName(teacherName);
+    public String SelectTeachers(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam(value = "param") String teacherName,Model model){
 
         Integer pageSize = 3;
+        PageHelper.clearPage();
         PageHelper.startPage(pageNo, pageSize);
+        List<Teacher> teachers = teacherService.GetTeacherByName(teacherName);
 //        List<Teacher> teachers = teacherService.GetAllTeacher();
-        PageInfo<Teacher> pageInfo = new PageInfo<>(teachers);
+            PageInfo<Teacher> pageInfo = new PageInfo<>(teachers);
 
         model.addAttribute("teachers",teachers);
         model.addAttribute("pageInfo",pageInfo);
         List<College> colleges= collegeService.GetAllCollege();
         model.addAttribute("collegeList",colleges);
         model.addAttribute("PageUrl","/SelectTeacher.do");
+        model.addAttribute("param1",teacherName);
+
         return "simpleTeacherList.jsp";
 
     }

@@ -33,7 +33,7 @@
 			
 			<div class="layui-row">
 				<div class="pull-left">
-					<h3>学生管理</h3>
+					<h3>信息管理</h3>
 					<br />
 					<br />
 				</div>
@@ -51,7 +51,7 @@
 				
 			</div>
 			<div class="weadmin-block">
-				<button class="layui-btn" onclick="location.href='/toAddStudent.do'">
+				<button class="layui-btn" onclick="location.href='/simpleMessageAdd.jsp'">
 					<i class="layui-icon layui-icon-add-circle-fine"></i>添加
 				</button>
 				<span class="fr" style="line-height:40px">共有数据 22 条</span>
@@ -59,30 +59,19 @@
 			<table class="layui-table" id="memberList">
 				<thead>
 					<tr>
-						<th>学号</th>
-						<th>姓名</th>
-						<th>性别</th>
-						<th>出生年份</th>
-						<th>入学时间</th>
-						<th>学院</th>
-						<th>操作</th>
+						<th>发件人</th>
+						<th>收件人</th>
+						<th>信息</th>
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach items="${students}" var="student">
+				<c:forEach items="${messages}" var="message">
 					<tr>
-						<td>${student.userID}</td>
-						<td>${student.userName}</td>
-						<td>${student.sex}</td>
-						<td><fmt:formatDate value="${student.birthYear}"  type="date" dateStyle="medium" /></td>
-						<td><fmt:formatDate value="${student.grade}"  type="date" dateStyle="medium"/></td>
-						<td>${student.collegeID}</td>
-						
-						<td>
-							<button class="btn btn-default btn-xs btn-info" onClick="location.href='/toEditStudent.do?userID=${student.userID}'">修改</button>
-							<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/admin/removeStudent?id=${student.userID}'">删除</button>
-							<!--弹出框-->
-						</td>
+						<td>${message.senderID}</td>
+						<td>${message.reciverID}</td>
+						<td>${message.message}</td>
+
+
 					</tr>
 				</c:forEach>
 				</tbody>

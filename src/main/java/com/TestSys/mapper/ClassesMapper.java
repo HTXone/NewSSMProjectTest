@@ -4,6 +4,7 @@ import com.TestSys.entity.Classes;
 import org.apache.ibatis.annotations.*;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -50,5 +51,26 @@ public interface ClassesMapper {
     @Select("select * from course where courseName like #{className}")
     @ResultMap("ClassesMap")
     List<Classes> SelectByClassName(String className);
+
+    @Select("select * from classWithGrade where studentID = #{studentID} and mark is null")
+    @Results(id = "ClassesMap2",value = {
+            @Result(id = true,column = "courseID",property = "courseID"),
+            @Result(column = "courseName",property = "courseName"),
+            @Result(column = "teacherID",property = "teacherID"),
+            @Result(column = "courseTime",property = "courseTime"),
+            @Result(column = "classRoom",property = "classRoom"),
+            @Result(column = "courseWeek",property = "courseWeek"),
+            @Result(column = "courseType",property = "courseType"),
+            @Result(column = "collegeID",property = "collegeID"),
+            @Result(column = "score",property = "score"),
+            @Result(column = "mark",property = "mark"),
+            @Result(column = "studentID",property = "studentID")
+    })
+    List<Classes> SelectByStudentSelected(int studentID);
+
+    @Select("select * from classWithGrade where studentID = #{studentID} and mark like '%%'")
+    @ResultMap("ClassesMap2")
+    List<Classes> StudentScore(int studentID);
+
 
 }

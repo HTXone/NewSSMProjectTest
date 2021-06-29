@@ -11,6 +11,24 @@ public class Classes {
     private String courseType;
     private int collegeID;
     private int score;
+    private int studentID;
+    private int mark;
+
+    public int getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
+    public int getMark() {
+        return mark;
+    }
+
+    public void setMark(int mark) {
+        this.mark = mark;
+    }
 
     public int getCourseID() {
         return courseID;

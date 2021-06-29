@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface UserInfoMapper  {
-    @Select("select * from userlogin where userName = #{userName} and password = #{password}")
+    @Select("select * from userlogin where userID = #{userName} and password = #{password}")
     @Results(id = "UserMap",value = {
             @Result(id = true,column = "userID",property = "id"),
             @Result(column = "password",property = "PWD"),
@@ -37,5 +37,8 @@ public interface UserInfoMapper  {
     @Delete("delete from userlogin where userID = #{userID}")
     int DeleteUser(int userID);
 
+    @Select("select * from userlogin where userID = #{userID}")
+    @ResultMap("UserMap")
+    User SelectUser(int userID);
 
 }

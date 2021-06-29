@@ -48,7 +48,16 @@ public class ClassesServiceImpl implements ClassesService {
 
     @Override
     public int NewClass(Classes classes) {
-        return classesMapper.AddClass(classes);
+        int ans = 0;
+
+        try{
+            int ClassID = classesMapper.SelectNewID()+1;
+            classes.setCourseID(ClassID);
+            ans = classesMapper.AddClass(classes);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ans;
     }
 
     @Override
@@ -115,7 +124,17 @@ public class ClassesServiceImpl implements ClassesService {
 
     @Override
     public List<Classes> SelectClassesByName(String className) {
-        return classesMapper.SelectByClassName(className);
+        return classesMapper.SelectByClassName("%"+className+"%");
+    }
+
+    @Override
+    public List<Classes> StudentSelectedClasses(int studentID) {
+        return classesMapper.SelectByStudentSelected(studentID);
+    }
+
+    @Override
+    public List<Classes> StudentScore(int studentID) {
+        return classesMapper.StudentScore(studentID);
     }
 
 

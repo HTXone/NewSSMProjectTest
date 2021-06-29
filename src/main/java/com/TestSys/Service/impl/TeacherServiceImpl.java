@@ -129,7 +129,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public List<Teacher> GetTeacherByName(String userName) {
-        return teacherMapper.selectTeacherByName(userName);
+        return teacherMapper.selectTeacherByName("%"+userName+"%");
     }
 
 

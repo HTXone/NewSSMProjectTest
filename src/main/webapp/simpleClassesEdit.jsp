@@ -47,13 +47,13 @@
 									  <div class="form-group">
 									    <label for="inputEmail3" class="col-sm-2 control-label">课程号</label>
 									    <div class="col-sm-10">
-									      <input readonly="readonly"  type="number" class="form-control" id="inputEmail3" value="${classes.courseID}" name="courseid" placeholder="请输入课程号">
+									      <input readonly="readonly"  type="number" class="form-control" id="inputEmail3" value="${classes.courseID}" name="courseID" placeholder="请输入课程号">
 									    </div>
 									  </div>
 									  <div class="form-group">
 									    <label for="inputPassword3" class="col-sm-2 control-label">课程名称</label>
 											<div class="col-sm-10">
-									      <input type="text" class="form-control" id="inputPassword3" name="coursename" value="${classes.courseName}" placeholder="请输入课程名称">
+									      <input type="text" class="form-control" id="inputPassword3" name="courseName" value="${classes.courseName}" placeholder="请输入课程名称">
 									    </div>
 									  </div>
 									  <div class="form-group">
@@ -61,7 +61,7 @@
 										  <div class="col-sm-10">
 											  <select class="form-control" name="teacherID" id="teacherid">
 												  <c:forEach items="${teacherList}" var="item">
-													  <option value="${item.userID}">${item.userName}</option>
+													  <option value=${item.userID}>${item.userName}</option>
 												  </c:forEach>
 											  </select>
 										  </div>
@@ -87,7 +87,7 @@
 									<div class="form-group">
 										<label for="inputPassword3" class="col-sm-2 control-label" name="courseType">课程的类型：</label>
 										<div class="col-sm-10">
-											<select class="form-control" name="coursetype" id="coursetype">
+											<select class="form-control" name="courseType" id="coursetype">
 												<option value="必修课">必修课</option>
 												<option value="选修课">选修课</option>
 												<option value="公共课">公共课</option>

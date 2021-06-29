@@ -28,6 +28,10 @@
 
 <body>
 
+	<jsp:include page="head.jsp"></jsp:include>
+	<!-- 侧边菜单 -->
+	<jsp:include page="side.jsp"></jsp:include>
+
     <div class="admin-body" id="tabs">
 		<div class="weadmin-body">
 			<div id="content">

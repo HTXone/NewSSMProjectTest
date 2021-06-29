@@ -17,6 +17,8 @@ public interface ClassesService {
     Classes SelectClassesByID(int classesID);
     List<Classes> SelectClassesByTeacher(int TeacherID);
     List<Classes> SelectClassesByName(String className);
+    List<Classes> StudentSelectedClasses(int studentID);
+    List<Classes> StudentScore(int studentID);
 
 
 }

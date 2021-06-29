@@ -45,8 +45,9 @@
 						    <div class="panel-body">
 								<form name="reset" class="form-horizontal" role="form" action="/Mark.do" id="editfrom" method="post" onsubmit="return check()">
 									<div class="form-group">
+<%--										<label for="inputEmail3" class="col-sm-2 control-label">课程</label>--%>
 										<div class="col-sm-10">
-										<input  readonly="readonly" type="hidden" class="form-control" name="courseID" id="inputEmail3" value="${courseID}">
+											<input  readonly="readonly" type="hidden" class="form-control" name="courseID" id="inputEmail3" value="${courseID}">
 										</div>
 									</div>
 									<div class="form-group">
@@ -58,13 +59,13 @@
 									  <div class="form-group">
 									    <label for="inputPassword3" class="col-sm-2 control-label">姓名</label>
 									    <div class="col-sm-10">
-									      <input  readonly="readonly" type="text" name="userName" class="form-control" id="inputPassword3" value="${userName}">
+									      <input  readonly="readonly" type="text" name="studentName" class="form-control" id="inputPassword3" value="${studentName}">
 									    </div>
 									  </div>
 									  <div class="form-group">
 									    <label for="inputPassword3" class="col-sm-2 control-label">成绩</label>
 									    <div class="col-sm-10">
-									      <input type="number" name="score" class="form-control" id="inputPassword3" placeholder="请输入成绩">
+									      <input type="number" name="mark" class="form-control" id="inputPassword3" placeholder="请输入成绩">
 									    </div>
 									  </div>
 									  <div class="form-group" style="text-align: center">

@@ -6,11 +6,15 @@ import org.springframework.stereotype.Repository;
 public class Score {
     private int courseID;
     private int studentID;
-    private int mark;
+    private Integer mark;
     private String userName;
-    private boolean over;
+    private boolean over = false;
 
     public boolean isOver() {
+        if(this.mark != null ){
+            this.over = true;
+//            System.out.println("IN");
+        }
         return over;
     }
 
@@ -50,11 +54,19 @@ public class Score {
         this.studentID = studentID;
     }
 
-    public int getMark() {
+    public Integer getMark() {
+        if(this.mark != null ){
+            this.over = true;
+//            System.out.println("IN");
+        }
+//        System.out.println("OUT");
         return mark;
     }
 
     public void setMark(int mark) {
+        if(this.mark != null ){
+            this.over = true;
+        }
         this.mark = mark;
     }
 

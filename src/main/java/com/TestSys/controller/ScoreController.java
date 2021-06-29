@@ -41,20 +41,21 @@ public class ScoreController {
     }
 
     @RequestMapping("/CourseScoreList.do")
-    public String FindCourseScores(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam(value = "courseID")int courseID, Model model){
+    public String FindCourseScores(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam(value = "param")int courseID, Model model){
         Integer pageSize = 3;
         PageHelper.startPage(pageNo, pageSize);
         List<Score> scores = scoreService.SelectScoreByCourseID(courseID);
         PageInfo<Score> pageInfo = new PageInfo<>(scores);
-
+        model.addAttribute("courseID",courseID);
         model.addAttribute("selectedCourseList",scores);
         model.addAttribute("pageInfo",pageInfo);
         model.addAttribute("PageUrl","/CourseScoreList.do");
+        model.addAttribute("param1",courseID);
         return "simpleGradeList.jsp";
     }
 
-    @PatchMapping("/toMark.do")
-    public String toMark(@RequestParam("courseID") int courseID,@RequestParam("studentID") int studentID,@RequestParam("studentName") int studentName, Model model){
+    @RequestMapping("/toMark.do")
+    public String toMark(@RequestParam("courseID") int courseID,@RequestParam("studentID") int studentID,@RequestParam("studentName") String studentName, Model model){
         model.addAttribute("courseID",courseID);
         model.addAttribute("studentID",studentID);
         model.addAttribute("studentName",studentName);
@@ -62,12 +63,15 @@ public class ScoreController {
         return "simpleMark.jsp";
     }
 
-    @PatchMapping("/Mark.do")
-    public String Mark(@RequestParam("courseID") Score score,@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam(value = "courseID")int courseID, Model model){
+    @RequestMapping(value = "/Mark.do")
+    public String Mark(Score score,@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam(value = "courseID")int courseID, Model model){
         scoreService.MarkScore(score);
 
         return this.FindCourseScores(pageNo,courseID,model);
     }
+
+
+
 
 
 

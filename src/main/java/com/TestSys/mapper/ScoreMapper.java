@@ -39,4 +39,11 @@ public interface ScoreMapper {
     @ResultMap("ScoreMap")
     List<Score> selectALL();
 
+    @Select("select count(*) from selectedcourse where studentID = #{studentID} and courseID = #{courseID}")
+    int isSelected(@Param("studentID") int studentID,@Param("courseID") int courseID);
+
+    @Select("select * from selectedcourse where studentID = #{studentID} and courseID = #{courseID}")
+    @ResultMap("ScoreMap")
+    Score SelectScore(@Param("studentID") int studentID,@Param("courseID") int courseID);
+
 }

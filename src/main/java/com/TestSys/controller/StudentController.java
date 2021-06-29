@@ -27,13 +27,14 @@ public class StudentController {
     @RequestMapping("/StudentList.do")
     public String FindAllStudents(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,Model model){
         Integer pageSize = 3;
+        PageHelper.clearPage();
         PageHelper.startPage(pageNo, pageSize);
         List<Student> students = studentService.GetAllStudent();
         PageInfo<Student> pageInfo = new PageInfo<>(students);
-
         model.addAttribute("students",students);
         model.addAttribute("pageInfo",pageInfo);
         model.addAttribute("PageUrl","/StudentList.do");
+        model.addAttribute("param1","");
         return "simpleStudentList.jsp";
     }
 
@@ -55,33 +56,24 @@ public class StudentController {
 
     @RequestMapping("/EditStudent.do")
     public String EditStudents(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,Student student, Model model){
-        Integer pageSize = 3;
-        PageHelper.startPage(pageNo, pageSize);
         studentService.UpdateStudentInfo(student);
-        List<Student> students = studentService.GetAllStudent();
-        model.addAttribute("students",students);
-        PageInfo<Student> pageInfo = new PageInfo<>(students);
-        model.addAttribute("pageInfo",pageInfo);
-        model.addAttribute("PageUrl","/StudentList.do");
-        return "simpleStudentList.jsp";
+        return this.FindAllStudents(1,model);
     }
 
     @RequestMapping("/AddStudent.do")
     public String AddStudents(Student student,Model model){
         int id = studentService.NewStudent(student);
-        model.addAttribute("NewID",id);
-        model.addAttribute("PWD","123456789");
-        List<College> colleges= collegeService.GetAllCollege();
-        model.addAttribute("URL","/StudentList.do");
-        return "success.jsp";
+        return this.FindAllStudents(1,model);
     }
 
     @RequestMapping("/SelectStudent.do")
-    public String SelectStudents(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam(value = "studentName") String studentName,Model model){
-        List<Student> students = studentService.GetStudentByName(studentName);
+    public String SelectStudents(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,@RequestParam(value = "param") String studentName,Model model){
+
 
         Integer pageSize = 3;
-        PageHelper.startPage(pageNo, pageSize);
+        PageHelper.clearPage();
+        PageHelper.startPage(pageNo, pageSize,true);
+        List<Student> students = studentService.GetStudentByName(studentName);
 //        List<Student> students = studentService.GetAllStudent();
         PageInfo<Student> pageInfo = new PageInfo<>(students);
 
@@ -90,6 +82,7 @@ public class StudentController {
         List<College> colleges= collegeService.GetAllCollege();
         model.addAttribute("collegeList",colleges);
         model.addAttribute("PageUrl","/SelectStudent.do");
+        model.addAttribute("param1",studentName);
         return "simpleStudentList.jsp";
 
     }

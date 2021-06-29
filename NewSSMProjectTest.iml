@@ -9,6 +9,9 @@
         <fileset id="fileset2" name="Springmvc" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring/springmvc.xml</file>
         </fileset>
+        <fileset id="fileset3" name="ApplicationContext Shiro" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-shiro.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>

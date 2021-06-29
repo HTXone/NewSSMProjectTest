@@ -38,27 +38,23 @@
 					<br />
 					<br />
 				</div>
-				<div class=" pull-right">
-					<form class="layui-form layui-col-md12 we-search">
-						会员搜索：
-						<div class="layui-inline">
-							<input class="layui-input" placeholder="开始日" Name="start" id="start" />
-						</div>
-						<div class="layui-inline">
-							<input class="layui-input" placeholder="截止日" Name="end" id="end" />
-						</div>
-						<div class="layui-inline">
-							<input type="text" Name="userName" placeholder="请输入用户名" autocomplete="off" class="layui-input" />
-						</div>
-						<button class="layui-btn" lay-submit="" lay-filter="sreach">
-							<i class="layui-icon layui-icon-search"></i>
-						</button>
-					</form>
-				</div>
+				<c:if test="${user['role'] == 0}">
+					<div class=" pull-right">
+						<form class="layui-form layui-col-md12 we-search" action="/SelectClasses.do">
+							课程搜索：
+							<div class="layui-inline">
+								<input type="text" Name="param" placeholder="请输入课程名" autocomplete="off" class="layui-input" />
+							</div>
+							<button class="layui-btn" lay-submit="" lay-filter="sreach">
+								<i class="layui-icon layui-icon-search"></i>
+							</button>
+						</form>
+					</div>
+				</c:if>
 				
 			</div>
 			<div class="weadmin-block">
-				<button class="layui-btn" onclick="location.href='/simpleClassesAdd.jsp'">
+				<button class="layui-btn" onclick="location.href='/toAddClasses.do'">
 					<i class="layui-icon layui-icon-add-circle-fine"></i>添加
 				</button>
 				<span class="fr" style="line-height:40px">共有数据 22 条</span>
@@ -74,7 +70,8 @@
 								<th>周数</th>
 								<th>课程类型</th>
 								<th>学分</th>
-								<th>操作</th>
+								<c:if test="${Selected!=1}"><th>操作</th></c:if>
+								<c:if test="${user['role'] == 2 && Selected==1}"><th>成绩</th></c:if>
 				            </tr>
 				        </thead>
 				        <tbody>
@@ -89,11 +86,12 @@
 								<td>${item.courseType}</td>
 								<td>${item.score}</td>
 								<td>
-									<button class="btn btn-default btn-xs btn-info" onClick="location.href='/toEditClasses.do?ID=${item.courseID}'">修改</button>
-									<button class="btn btn-default btn-xs btn-info" onClick="location.href='/admin/removeCourse?id=${item.courseID}'">选课</button>
-									<button class="btn btn-default btn-xs btn-info" onClick="location.href='/admin/removeCourse?id=${item.courseID}'">退课</button>
-									<button class="btn btn-default btn-xs btn-info" onClick="location.href='/CourseScoreList.do?courseID=${item.courseID}'">打分</button>
-									<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/admin/removeCourse?id=${item.courseID}'">删除</button>
+									<c:if test="${user['role'] == 0}"><button class="btn btn-default btn-xs btn-info" onClick="location.href='/toEditClasses.do?ID=${item.courseID}'">修改</button></c:if>
+									<c:if test="${user['role'] == 2 && Selected==0}"><button class="btn btn-default btn-xs btn-info" onClick="location.href='/SelectedCourse.do?courseID=${item.courseID}&studentID=${user['id']}'">选课</button></c:if>
+									<c:if test="${user['role'] == 2 && Selected==2}"><button class="btn btn-default btn-xs btn-info" onClick="location.href='/RemoveSelectedCourse.do?courseID=${item.courseID}&studentID=${user['id']}'">退课</button></c:if>
+									<c:if test="${user['role'] == 1}"><button class="btn btn-default btn-xs btn-info" onClick="location.href='/CourseScoreList.do?param=${item.courseID}'">打分</button></c:if>
+									<c:if test="${user['role'] == 0}"><button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/admin/removeCourse?id=${item.courseID}'">删除</button></c:if>
+									<c:if test="${user['role'] == 2 && Selected==1}">${item.mark}</c:if>
 									<!--弹出框-->
 								</td>
 							</tr>
@@ -104,22 +102,22 @@
 					<c:if test="${pageInfo != null}">
 						<nav style="text-align: center">
 							<ul class="pagination">
-								<li><a href="${PageUrl}?pageNo=${pageInfo.navigateFirstPage}">&laquo;第一页</a></li>
+								<li><a href="${PageUrl}?pageNo=${pageInfo.navigateFirstPage}&param=${param1}">&laquo;第一页</a></li>
 								<c:if test="${pageInfo.pageNum-2>0 }">
-									<li><a href="${PageUrl}?pageNo=${pageInfo.pageNum-2}">${pageInfo.pageNum-2}</a></li>
+									<li><a href="${PageUrl}?pageNo=${pageInfo.pageNum-2}&param=${param1}">${pageInfo.pageNum-2}</a></li>
 								</c:if>
 								<c:if test="${pageInfo.hasPreviousPage }">
-									<li><a href="${PageUrl}?pageNo=${pageInfo.pageNum-1}">${pageInfo.pageNum-1}</a></li>
+									<li><a href="${PageUrl}?pageNo=${pageInfo.pageNum-1}&param=${param1}">${pageInfo.pageNum-1}</a></li>
 								</c:if>
 								<li class="active"><a href="">${pageInfo.pageNum}</a></li>
 								<c:if test="${pageInfo.hasNextPage }">
-									<li><a href="${PageUrl}?pageNo=${pageInfo.pageNum+1}">${pageInfo.pageNum+1}</a></li>
+									<li><a href="${PageUrl}?pageNo=${pageInfo.pageNum+1}&param=${param1}">${pageInfo.pageNum+1}</a></li>
 								</c:if>
-								<c:if test="${pageInfo.pageNum+2<pageInfo.pageSize }">
-									<li><a href="${PageUrl}?pageNo=${pageInfo.pageNum+2}">${pageInfo.pageNum+2}</a></li>
+								<c:if test="${pageInfo.pageNum+2<=pageInfo.pageSize }">
+									<li><a href="${PageUrl}?pageNo=${pageInfo.pageNum+2}&param=${param1}">${pageInfo.pageNum+2}</a></li>
 								</c:if>
 
-								<li><a href="${PageUrl}?pageNo=${pageInfo.navigateLastPage}">最后一页&raquo;</a></li>
+								<li><a href="${PageUrl}?pageNo=${pageInfo.navigateLastPage}&param=${param1}">最后一页&raquo;</a></li>
 							</ul>
 						</nav>
 					</c:if>

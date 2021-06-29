@@ -3,6 +3,9 @@ package com.TestSys.controller;
 import com.TestSys.Service.UserService;
 import com.TestSys.entity.User;
 import com.TestSys.mapper.UserInfoMapper;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,23 +24,27 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/login.do",method = {RequestMethod.POST})
-    public ModelAndView login(@RequestParam(required = true) int userID, @RequestParam(required = true) String userPWD,  HttpServletResponse response){
-        ModelAndView mv = new ModelAndView();
+    @RequestMapping(value = "/login.do", method = {RequestMethod.POST})
+    public String login(String userID, String userPWD, HttpSession session) throws Exception {
 
-        User emps = userService.Login(userID,userPWD);
-        if(emps == null){
-            mv.setViewName("/login.html");
-            mv.addObject("loginfail", true);
-            return mv;
+        //Shiro实现登录
+        UsernamePasswordToken token = new UsernamePasswordToken(userID, userPWD);
+        Subject subject = SecurityUtils.getSubject();
+
+        //如果获取不到用户名就是登录失败，但登录失败的话，会直接抛出异常
+        subject.login(token);
+
+        User user = userService.SelectUser(Integer.parseInt(userID));
+        session.setAttribute("user",user);
+        if (subject.hasRole("admin")) {
+            return "/index.jsp";
+        } else if (subject.hasRole("teacher")) {
+            return "/index.jsp";
+        } else if (subject.hasRole("student")) {
+            return "/index.jsp";
         }
 
-        List<User> userList = new ArrayList<>();
-
-        userList.add(emps);
-        mv.setViewName("/emp.jsp");
-        mv.addObject("ss", userList);
-        return mv;
+        return "/login.jsp";
     }
 
     @RequestMapping(value = "/register.do" , method = RequestMethod.POST)

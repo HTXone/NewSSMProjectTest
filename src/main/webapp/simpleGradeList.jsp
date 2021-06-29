@@ -60,7 +60,7 @@
                                         <c:if test="${!item.over}">
                                             <td>未打分</td>
                                             <td>
-                                                <button class="btn btn-default btn-xs btn-info" onclick="location.href='/mark.do?courseID = ${courseID},studentID = ${item.studentID},studentName = ${item.studentName}}'">打分</button>
+                                                <button class="btn btn-default btn-xs btn-info" onclick="location.href='/toMark.do?courseID=${courseID}&studentID=${item.studentID}&studentName=${item.studentName}'">打分</button>
                                             </td>
                                         </c:if>
                                         <c:if test="${item.over}">
@@ -75,22 +75,22 @@
                                 <c:if test="${pageInfo != null}">
                                     <nav style="text-align: center">
                                         <ul class="pagination">
-                                            <li><a href="${PageUrl}?pageNo=${pageInfo.navigateFirstPage}">&laquo;第一页</a></li>
+                                            <li><a href="${PageUrl}?pageNo=${pageInfo.navigateFirstPage}&param=${param1}">&laquo;第一页</a></li>
                                             <c:if test="${pageInfo.pageNum-2>0 }">
-                                                <li><a href="${PageUrl}?pageNo=${pageInfo.pageNum-2}">${pageInfo.pageNum-2}</a></li>
+                                                <li><a href="${PageUrl}?pageNo=${pageInfo.pageNum-2}&param=${param1}">${pageInfo.pageNum-2}</a></li>
                                             </c:if>
                                             <c:if test="${pageInfo.hasPreviousPage }">
-                                                <li><a href="${PageUrl}?pageNo=${pageInfo.pageNum-1}">${pageInfo.pageNum-1}</a></li>
+                                                <li><a href="${PageUrl}?pageNo=${pageInfo.pageNum-1}&param=${param1}">${pageInfo.pageNum-1}</a></li>
                                             </c:if>
                                             <li class="active"><a href="">${pageInfo.pageNum}</a></li>
                                             <c:if test="${pageInfo.hasNextPage }">
-                                                <li><a href="${PageUrl}?pageNo=${pageInfo.pageNum+1}">${pageInfo.pageNum+1}</a></li>
+                                                <li><a href="${PageUrl}?pageNo=${pageInfo.pageNum+1}&param=${param1}">${pageInfo.pageNum+1}</a></li>
                                             </c:if>
                                             <c:if test="${pageInfo.pageNum+2<=pageInfo.pageSize }">
-                                                <li><a href="${PageUrl}?pageNo=${pageInfo.pageNum+2}">${pageInfo.pageNum+2}</a></li>
+                                                <li><a href="${PageUrl}?pageNo=${pageInfo.pageNum+2}&param=${param1}">${pageInfo.pageNum+2}</a></li>
                                             </c:if>
 
-                                            <li><a href="${PageUrl}?pageNo=${pageInfo.navigateLastPage}">最后一页&raquo;</a></li>
+                                            <li><a href="${PageUrl}?pageNo=${pageInfo.navigateLastPage}&param=${param1}">最后一页&raquo;</a></li>
                                         </ul>
                                     </nav>
                                 </c:if>
