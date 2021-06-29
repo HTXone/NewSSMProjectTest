@@ -3,6 +3,7 @@ package com.TestSys.controller;
 import com.TestSys.Service.UserService;
 import com.TestSys.entity.User;
 import com.TestSys.mapper.UserInfoMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -73,6 +74,12 @@ public class UserController {
     public String Logout(HttpSession session,Model model){
         session.setAttribute("user",null);
         return "/login.jsp";
+    }
+
+    @RequestMapping("/resetPWD.do")
+    public String ResetPWD(@RequestParam("userID") int UserID){
+        userService.ResetPWD(UserID);
+        return "/StudentList.do";
     }
 
 

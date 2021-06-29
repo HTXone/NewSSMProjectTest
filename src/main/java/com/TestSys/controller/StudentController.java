@@ -2,6 +2,7 @@ package com.TestSys.controller;
 
 import com.TestSys.Service.CollegeService;
 import com.TestSys.Service.StudentService;
+import com.TestSys.Service.UserService;
 import com.TestSys.entity.College;
 import com.TestSys.entity.Student;
 import com.github.pagehelper.PageHelper;
@@ -20,6 +21,9 @@ import java.util.List;
 public class StudentController {
     @Autowired
     StudentService studentService;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     CollegeService collegeService;
@@ -90,6 +94,12 @@ public class StudentController {
     @RequestMapping("/StudentSuccess.do")
     public String SuccessBack(@RequestParam(defaultValue = "1",required = true,value = "pageNo") Integer pageNo,Model model){
         return this.FindAllStudents(pageNo,model);
+    }
+
+    @RequestMapping("/StudentDelete.do")
+    public String DeleteStudent(@RequestParam("userID") int userID,Model model){
+        int ans = userService.deleteUser(userID);
+        return this.FindAllStudents(1,model);
     }
 
 

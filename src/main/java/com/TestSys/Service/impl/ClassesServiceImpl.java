@@ -105,9 +105,9 @@ public class ClassesServiceImpl implements ClassesService {
         List<Score> scoreList = scoreMapper.selectByCourseID(ClassID);
         if(scoreList.size()>0){
             System.out.println("USED");
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override

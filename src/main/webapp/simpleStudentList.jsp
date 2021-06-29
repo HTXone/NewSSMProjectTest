@@ -55,7 +55,7 @@
 				<button class="layui-btn" onclick="location.href='/toAddStudent.do'">
 					<i class="layui-icon layui-icon-add-circle-fine"></i>添加
 				</button>
-				<span class="fr" style="line-height:40px">共有数据 ${students.size()} 条</span>
+				<span class="fr" style="line-height:40px">共有数据 ${pageInfo.total} 条</span>
 			</div>
 			<table class="layui-table" id="memberList">
 				<thead>
@@ -81,7 +81,8 @@
 						
 						<td>
 							<button class="btn btn-default btn-xs btn-info" onClick="location.href='/toEditStudent.do?userID=${student.userID}'">修改</button>
-							<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/admin/removeStudent?id=${student.userID}'">删除</button>
+							<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/StudentDelete.do?userID=${student.userID}'">删除</button>
+							<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/resetPWD.do?userID=${student.userID}'">重置</button>
 							<!--弹出框-->
 						</td>
 					</tr>

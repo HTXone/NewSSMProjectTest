@@ -192,6 +192,12 @@ public class ClassesController {
         return "simpleStudentIndex.jsp";
     }
 
+    @RequestMapping("/DeleteClass.do")
+    public String ClassDelete(@RequestParam("courseID")int courseID,Model model){
+        int ans = classesService.DeleteClass(courseID);
+        System.out.println(ans);
+        return this.FindAllClassess(1,model);
+    }
 
 
 }

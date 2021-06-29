@@ -2,6 +2,7 @@ package com.TestSys.controller;
 
 import com.TestSys.Service.CollegeService;
 import com.TestSys.Service.TeacherService;
+import com.TestSys.Service.UserService;
 import com.TestSys.entity.College;
 import com.TestSys.entity.Teacher;
 import com.github.pagehelper.PageHelper;
@@ -20,6 +21,9 @@ public class TeacherController {
 
     @Autowired
     TeacherService teacherService;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     CollegeService collegeService;
@@ -87,6 +91,11 @@ public class TeacherController {
 
     }
 
+    @RequestMapping("/TeacherDelete.do")
+    public String DeleteStudent(@RequestParam("userID") int userID,Model model){
+        int ans = userService.deleteUser(userID);
+        return this.FindAllTeachers(1,model);
+    }
 
 
 

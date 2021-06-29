@@ -29,7 +29,7 @@
 						<button type="button" class="zd" id="zd" >
 							<span class="glyphicon glyphicon-align-justify"></span>
 						</button>
-
+						<a href="#" class="navbar-brand"><img src="img/qifeiye.png"/></a>
 					</div>
 					<div class="collapse navbar-collapse" id="daohangtiao">
 						<ul class="nav navbar-nav">

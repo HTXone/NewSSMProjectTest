@@ -58,7 +58,7 @@
 				<button class="layui-btn" onclick="location.href='/toAddClasses.do'">
 					<i class="layui-icon layui-icon-add-circle-fine"></i>添加
 				</button></c:if>
-				<span class="fr" style="line-height:40px">共有数据 ${classess.size()} 条</span>
+				<span class="fr" style="line-height:40px">共有数据 ${pageInfo.total} 条</span>
 			</div>
 			<table class="table table-bordered">
 				        <thead>
@@ -91,7 +91,7 @@
 									<c:if test="${user['role'] == 2 && Selected==0}"><button class="btn btn-default btn-xs btn-info" onClick="location.href='/SelectedCourse.do?courseID=${item.courseID}&studentID=${user['id']}'">选课</button></c:if>
 									<c:if test="${user['role'] == 2 && Selected==2}"><button class="btn btn-default btn-xs btn-info" onClick="location.href='/RemoveSelectedCourse.do?courseID=${item.courseID}&studentID=${user['id']}'">退课</button></c:if>
 									<c:if test="${user['role'] == 1}"><button class="btn btn-default btn-xs btn-info" onClick="location.href='/CourseScoreList.do?param=${item.courseID}'">打分</button></c:if>
-									<c:if test="${user['role'] == 0}"><button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/admin/removeCourse?id=${item.courseID}'">删除</button></c:if>
+									<c:if test="${user['role'] == 0}"><button class="btn btn-default btn-xs btn-danger btn-primary" onClick="location.href='/DeleteClass.do?courseID=${item.courseID}'">删除</button></c:if>
 									<c:if test="${user['role'] == 2 && Selected==1}">${item.mark}</c:if>
 									<!--弹出框-->
 								</td>

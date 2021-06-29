@@ -12,4 +12,5 @@ public interface UserService {
     int deleteUser(int userID);
     int UpdatePWD(int userID,String OldPWD,String NewPWD);
     User SelectUser(int UserID);
+    int ResetPWD(int UserID);
 }

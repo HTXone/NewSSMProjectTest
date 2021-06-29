@@ -55,4 +55,11 @@ public class UserServiceImpl implements UserService {
     public User SelectUser(int UserID) {
         return mapper.SelectUser(UserID);
     }
+
+    @Override
+    public int ResetPWD(int UserID) {
+        User user = mapper.SelectUser(UserID);
+        if (user == null){return 0;}
+        return mapper.UpdateUserPWD(UserID,"123456789");
+    }
 }
